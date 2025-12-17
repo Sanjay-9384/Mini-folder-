@@ -1,0 +1,70 @@
+<div id ="one">
+    <h1>To-Do List</h1>
+    
+    <input type="text" id="itemInput" placeholder="Add your task">
+<button onclick="adding()">Add</button>
+<div id="two">
+    <ul id="itemList">
+    
+</ul>
+</div>
+
+</div>
+
+<style>
+    #one {
+        text-align: center;
+        margin-top: 50px;
+        border: 2px solid black;
+        padding: 10px;
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        
+        border-radius: 10px;
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+        background-color: wheat
+
+
+    }
+    #two {
+        margin-top: 20px;
+        text-align: center;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        margin: 10px 0;
+    }
+    button {
+        margin-left: 10px;
+        background-color: rgb(7, 7, 2);
+        color: white;
+        
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        
+
+    }
+
+</style>
+
+
+
+<script>
+    var itemIn = document.getElementById("itemInput");
+    var itemUl = document.getElementById("itemList");
+    function adding() {
+        var li = document.createElement("li");
+        li.innerHTML = itemIn.value +"<button onclick='deleteItem(event)'>delete</button>"
+        itemUl.append(li);
+
+    }
+    function deleteItem(event) {
+        event.target.parentElement.remove();
+    }
+</script>

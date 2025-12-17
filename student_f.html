@@ -1,0 +1,143 @@
+<h1>STUDENT FORM</h1>
+<div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age">
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender">
+        <option value="male">Male</option>          
+        <option value="female">Female</option>
+    </select>
+    <label for="course">Course:</label>
+    <select id="course" name="course">
+        <option value="math">Mathematics</option>
+        <option value="science">Science</option>
+        <option value="history">History</option>
+    </select>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <button type="button" onclick="submiting()">Submit</button>
+</div>
+
+<div id="output" style="display: none; margin-top: 20px; padding: 20px; border: 2px solid black; border-radius: 10px; background-color: lightgreen;">
+    <h2>Submitted Data:</h2>
+    <table id="data-table" border="1" style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Course</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Rows will be added here -->
+        </tbody>
+    </table>
+</div>
+
+<style>
+    div {
+        width: 500px;
+        margin: auto;
+        border: 2px solid black;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+        background-color: lightblue;
+        display: flex;
+        flex-direction: column;
+    }
+    label {
+        margin-top: 10px;
+        text-align: left;
+    }
+    input, select {
+        margin-top: 5px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    button {
+        margin-top: 15px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: darkblue;
+        color: white;
+        cursor: pointer;
+    }
+    h1 {
+        text-align: center;
+    }
+    table th, table td {
+        padding: 8px;
+        text-align: left;
+    }
+    table th {
+        white-space: nowrap;
+    }
+    table td {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+</style>
+   
+        
+<script>
+    var nameIn = document.getElementById("name");
+    var ageIn = document.getElementById("age");
+    var genderIn = document.getElementById("gender");
+    var courseIn = document.getElementById("course");
+    var emailIn = document.getElementById("email");
+    var outputDiv = document.getElementById("output");
+    var tableBody = document.getElementById("table-body");
+
+    function submiting() {
+        var name = nameIn.value.trim();
+        var age = ageIn.value.trim();
+        var gender = genderIn.value;
+        var course = courseIn.value;    
+        var email = emailIn.value.trim();
+
+        // Basic validation
+        if (!name || !age || !email) {
+            alert("Please fill in all required fields (Name, Age, Email).");
+            return;
+        }
+
+        // Create a new row
+        var newRow = tableBody.insertRow();
+
+        // Add cells to the row
+        var nameCell = newRow.insertCell(0);
+        var ageCell = newRow.insertCell(1);
+        var genderCell = newRow.insertCell(2);
+        var courseCell = newRow.insertCell(3);
+        var emailCell = newRow.insertCell(4);
+
+        // Set cell content
+        nameCell.textContent = name;
+        ageCell.textContent = age;
+        genderCell.textContent = gender;
+        courseCell.textContent = course;
+        emailCell.textContent = email;
+
+        // Show the output div if it's the first entry
+        if (outputDiv.style.display === "none") {
+            outputDiv.style.display = "block";
+        }
+
+        // Clear the form for next entry
+        nameIn.value = "";
+        ageIn.value = "";
+        ageIn.value = "";
+        genderIn.value = "male"; // Reset to default
+        courseIn.value = "math"; // Reset to default
+        emailIn.value = "";
+
+        alert("Member added to the table!");
+    }
+</script>
